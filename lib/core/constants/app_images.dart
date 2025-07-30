@@ -1,5 +1,4 @@
 class AppImages {
-  static const roundedLogo = 'https://i.imgur.com/9EsY2t6.png';
-
- 
+  static const splashScreen = 'assets/images/Splash_screen.png';
+  static const onBoarding = 'assets/images/onBoarding.png';
 }
