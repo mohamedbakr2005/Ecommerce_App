@@ -16,6 +16,9 @@ class AppColors {
   static const Color placeholder = Color(0xFF8B8B97);
   static const Color textInputBackground = Color(0xFFF7F7F7);
   static const Color separator = Color(0xFFFAFAFA);
-  static const Color gray = Color(0xFFE1E1E1);
+  static const Color gray = Color(0xFF808080);
   static const Color black = Color(0xFF000000);
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color red = Color(0xFFD32F2F);
+  static const Color facebook = Color(0xFF1877F2);
 }

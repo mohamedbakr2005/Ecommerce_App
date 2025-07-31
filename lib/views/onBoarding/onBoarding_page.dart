@@ -29,9 +29,13 @@ class OnBoardingPage extends StatelessWidget {
               left: 0,
               right: 0,
               bottom: 0,
-              child: BottonSheet(
-                onGetStartedPressed: () {
-                  AppRoutes.onboarding;
+              child: ButtonSheet(
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    AppRoutes.signup,
+                    (route) => false,
+                  );
                 },
               ),
             ),
