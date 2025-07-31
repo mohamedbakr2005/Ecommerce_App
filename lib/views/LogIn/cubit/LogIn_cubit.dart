@@ -1,16 +1,14 @@
-import 'package:e_commerce/core/routes/app_routes.dart';
-import 'package:e_commerce/views/SignUp/cubit/SignUp_state.dart';
+import 'package:e_commerce/views/LogIn/cubit/Login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:async';
 
-class SignUpCubit extends Cubit<SignUpState> {
-  SignUpCubit()
+class LoginCubit extends Cubit<LoginState> {
+  LoginCubit()
     : super(
-        SignUpState(
+        LoginState(
           isPasswordVisible: false,
           isLoading: false,
-          fullNameController: TextEditingController(),
           emailController: TextEditingController(),
           passwordController: TextEditingController(),
         ),
@@ -18,10 +16,6 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   void togglePasswordVisibility() {
     emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
-  }
-
-  void onFullNameChanged(String value) {
-    emit(state.copyWith());
   }
 
   void onEmailChanged(String value) {
@@ -32,7 +26,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     emit(state.copyWith());
   }
 
-  Future<void> signUp(BuildContext context) async {
+  Future<void> login(BuildContext context) async {
     // Start loading
     emit(state.copyWith(isLoading: true));
 
@@ -42,17 +36,16 @@ class SignUpCubit extends Cubit<SignUpState> {
     // Stop loading
     emit(state.copyWith(isLoading: false));
 
-    // Navigate to next screen
+    // Navigate to next screen (you can change this to your desired route)
     Navigator.pushNamedAndRemoveUntil(
       context,
-      AppRoutes.login, // Replace with your actual route
+      '/home', // Replace with your actual route
       (route) => false,
     );
   }
 
   @override
   Future<void> close() {
-    state.fullNameController.dispose();
     state.emailController.dispose();
     state.passwordController.dispose();
     return super.close();
