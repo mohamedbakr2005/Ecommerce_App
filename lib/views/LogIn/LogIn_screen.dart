@@ -5,25 +5,23 @@ import 'package:e_commerce/core/constants/app_images.dart';
 import 'package:e_commerce/core/constants/app_spacing.dart';
 import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/core/utils/validators.dart';
-import 'package:e_commerce/views/SignUp/cubit/SignUp_cubit.dart';
-import 'package:e_commerce/views/SignUp/cubit/SignUp_state.dart';
+import 'package:e_commerce/views/LogIn/cubit/LogIn_cubit.dart';
+import 'package:e_commerce/views/LogIn/cubit/Login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
-
-  final formKey = GlobalKey<FormState>();
+class LogInScreen extends StatelessWidget {
+  const LogInScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SignUpCubit(),
+      create: (context) => LoginCubit(),
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
-          body: BlocBuilder<SignUpCubit, SignUpState>(
+          body: BlocBuilder<LoginCubit, LoginState>(
             builder: (context, state) {
               return SingleChildScrollView(
                 child: SafeArea(
@@ -36,7 +34,7 @@ class SignUpScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Create an account",
+                          "Login to your account",
                           style: TextStyle(
                             fontSize: 32.sp,
                             fontWeight: FontWeight.bold,
@@ -44,34 +42,18 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "Let's create your account",
+                          "It's great to see you again.",
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w400,
                             color: AppColors.gray,
                           ),
                         ),
-                        verticalSpace(20),
+                        verticalSpace(30),
                         Form(
-                          key: formKey,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                "Full Name",
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.black,
-                                ),
-                              ),
-                              verticalSpace(5),
-                              AppTextFormField(
-                                controller: state.fullNameController,
-                                hintText: "Enter your full name",
-                                validator: Validators.required,
-                              ),
-                              verticalSpace(20),
                               Text(
                                 "Email",
                                 style: TextStyle(
@@ -83,7 +65,8 @@ class SignUpScreen extends StatelessWidget {
                               verticalSpace(5),
                               AppTextFormField(
                                 controller: state.emailController,
-                                hintText: "Enter your email",
+                                hintText: "Enter your email address",
+                                keyboardType: TextInputType.emailAddress,
                                 validator: Validators.email,
                               ),
                               verticalSpace(20),
@@ -104,7 +87,7 @@ class SignUpScreen extends StatelessWidget {
                                 suffixIcon: IconButton(
                                   onPressed: () {
                                     context
-                                        .read<SignUpCubit>()
+                                        .read<LoginCubit>()
                                         .togglePasswordVisibility();
                                   },
                                   icon: Icon(
@@ -115,56 +98,35 @@ class SignUpScreen extends StatelessWidget {
                                 ),
                               ),
                               verticalSpace(10),
-                              RichText(
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: "By signing up, you agree to our ",
-                                      style: TextStyle(
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w400,
-                                        color: AppColors.black.withOpacity(0.7),
-                                      ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Forgot your password? ",
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.black,
                                     ),
-                                    TextSpan(
-                                      text: "Terms",
-                                      style: TextStyle(
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold,
-                                        color: AppColors.black.withOpacity(0.9),
-                                        decoration: TextDecoration.underline,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: ", Privacy Policy,",
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      // Navigate to forgot password screen
+                                    },
+                                    child: Text(
+                                      "Reset your password",
                                       style: TextStyle(
                                         fontSize: 14.sp,
                                         fontWeight: FontWeight.bold,
-                                        color: AppColors.black.withOpacity(0.9),
+                                        color: AppColors.black,
                                         decoration: TextDecoration.underline,
                                       ),
                                     ),
-                                    TextSpan(
-                                      text: " and ",
-                                      style: TextStyle(
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w400,
-                                        color: AppColors.black.withOpacity(0.7),
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: "Cookies Use",
-                                      style: TextStyle(
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold,
-                                        color: AppColors.black.withOpacity(0.9),
-                                        decoration: TextDecoration.underline,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                              verticalSpace(20),
+                              verticalSpace(30),
                               state.isLoading
                                   ? Container(
                                       width: double.infinity,
@@ -192,7 +154,7 @@ class SignUpScreen extends StatelessWidget {
                                           ),
                                           horizontalSpace(10),
                                           Text(
-                                            "Creating account...",
+                                            "Logging in...",
                                             style: TextStyle(
                                               fontSize: 16.sp,
                                               fontWeight: FontWeight.w600,
@@ -205,17 +167,17 @@ class SignUpScreen extends StatelessWidget {
                                   : AppButton(
                                       onPressed: state.isFormValid
                                           ? () {
-                                              context
-                                                  .read<SignUpCubit>()
-                                                  .signUp(context);
+                                              context.read<LoginCubit>().login(
+                                                context,
+                                              );
                                             }
                                           : null,
-                                      text: "Create an account",
+                                      text: "Login",
                                       backgroundColor: state.isFormValid
                                           ? AppColors.primary
                                           : AppColors.gray,
                                     ),
-                              verticalSpace(20),
+                              verticalSpace(30),
                               Row(
                                 children: [
                                   Expanded(child: Divider()),
@@ -252,7 +214,7 @@ class SignUpScreen extends StatelessWidget {
                                     ),
                                     horizontalSpace(10),
                                     Text(
-                                      "Continue with Google",
+                                      "Login with Google",
                                       style: TextStyle(
                                         fontSize: 16.sp,
                                         fontWeight: FontWeight.w500,
@@ -262,13 +224,12 @@ class SignUpScreen extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              verticalSpace(20),
+                              verticalSpace(15),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColors.facebook,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.w),
-                                    side: BorderSide(color: AppColors.gray),
                                   ),
                                 ),
                                 onPressed: () {},
@@ -282,7 +243,7 @@ class SignUpScreen extends StatelessWidget {
                                     ),
                                     horizontalSpace(10),
                                     Text(
-                                      "Continue with Facebook",
+                                      "Login with Facebook",
                                       style: TextStyle(
                                         fontSize: 16.sp,
                                         fontWeight: FontWeight.w500,
@@ -297,7 +258,7 @@ class SignUpScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Already have an account? ",
+                                    "Don't have an account? ",
                                     style: TextStyle(
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w400,
@@ -308,16 +269,16 @@ class SignUpScreen extends StatelessWidget {
                                     onTap: () {
                                       Navigator.pushNamedAndRemoveUntil(
                                         context,
-                                        AppRoutes.login,
+                                        AppRoutes.signup,
                                         (route) => false,
                                       );
                                     },
                                     child: Text(
-                                      "Log In",
+                                      "Join",
                                       style: TextStyle(
                                         fontSize: 16.sp,
                                         fontWeight: FontWeight.bold,
-                                        color: AppColors.primary,
+                                        color: AppColors.black,
                                         decoration: TextDecoration.underline,
                                       ),
                                     ),

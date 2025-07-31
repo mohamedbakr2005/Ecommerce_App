@@ -7,7 +7,7 @@ class AppTheme {
   static ThemeData get defaultTheme {
     return ThemeData(
       colorSchemeSeed: AppColors.primary,
-      fontFamily: "Poppins",
+      fontFamily: "Lato",
       textTheme: const TextTheme(
         bodyLarge: TextStyle(color: AppColors.primary),
         bodyMedium: TextStyle(color: AppColors.primary),
@@ -21,7 +21,7 @@ class AppTheme {
         titleTextStyle: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
-          fontFamily: "Poppins",
+          fontFamily: "Lato",
         ),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarBrightness: Brightness.light,
@@ -53,7 +53,7 @@ class AppTheme {
         style: TextButton.styleFrom(
           textStyle: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontFamily: 'Poppins',
+            fontFamily: 'Lato',
           ),
         ),
       ),
