@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/routes/unknown_page.dart';
+import 'package:e_commerce/views/SignUp/sign_up_screen.dart';
 import 'package:e_commerce/views/onBoarding/onBoarding_page.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -9,11 +10,10 @@ class RouteGenerator {
     final route = settings.name;
 
     switch (route) {
-      case AppRoutes.introLogin:
-        return CupertinoPageRoute(builder: (_) => const Placeholder());
       case AppRoutes.onboarding:
         return CupertinoPageRoute(builder: (_) => const OnBoardingPage());
-
+      case AppRoutes.signup:
+        return CupertinoPageRoute(builder: (_) => SignUpScreen());
       default:
         return errorRoute();
     }

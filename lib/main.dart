@@ -1,5 +1,7 @@
+import 'package:e_commerce/views/SignUp/cubit/SignUp_cubit.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/routes/app_routes.dart';
 import 'core/routes/on_generate_route.dart';
 import 'core/themes/app_themes.dart';
@@ -13,12 +15,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'e-commerce',
-      theme: AppTheme.defaultTheme,
-      onGenerateRoute: RouteGenerator.onGenerate,
-      initialRoute: AppRoutes.onboarding,
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'e-commerce',
+        theme: AppTheme.defaultTheme,
+        onGenerateRoute: RouteGenerator.onGenerate,
+        initialRoute: AppRoutes.onboarding,
+      ),
     );
   }
 }
