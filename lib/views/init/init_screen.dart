@@ -1,0 +1,87 @@
+import 'package:e_commerce/core/routes/app_routes.dart';
+import 'package:e_commerce/views/Home/Home_Screen.dart';
+import 'package:e_commerce/views/init/cubit/bottom_nav_cubit.dart';
+import 'package:e_commerce/views/init/cubit/bottom_nav_state.dart';
+import 'package:e_commerce/views/init/widgets/bottom_nav_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class InitScreen extends StatelessWidget {
+  const InitScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => BottomNavCubit(),
+      child: BlocBuilder<BottomNavCubit, BottomNavState>(
+        builder: (context, state) {
+          return Scaffold(
+            body: _buildBody(state.currentIndex),
+            bottomNavigationBar: const BottomNavBar(),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildBody(int currentIndex) {
+    switch (currentIndex) {
+      case 0:
+        return const HomeScreen();
+      case 1:
+        return _buildSearchScreen();
+      case 2:
+        return _buildSavedScreen();
+      case 3:
+        return _buildCartScreen();
+      case 4:
+        return _buildAccountScreen();
+      default:
+        return const HomeScreen();
+    }
+  }
+
+  Widget _buildSearchScreen() {
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          'Search Screen',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSavedScreen() {
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          'Saved Screen',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCartScreen() {
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          'Cart Screen',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAccountScreen() {
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          'Account Screen',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
+  }
+}
