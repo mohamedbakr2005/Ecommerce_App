@@ -7,6 +7,9 @@ class HomeState {
   final List<String> categories;
   final List<Map<String, dynamic>> products;
   final List<String> favoriteProducts;
+  final String sortBy;
+  final RangeValues priceRange;
+  final String selectedSize;
 
   HomeState({
     required this.isLoading,
@@ -15,6 +18,9 @@ class HomeState {
     required this.categories,
     required this.products,
     required this.favoriteProducts,
+    required this.sortBy,
+    required this.priceRange,
+    required this.selectedSize,
   });
 
   HomeState copyWith({
@@ -24,6 +30,9 @@ class HomeState {
     List<String>? categories,
     List<Map<String, dynamic>>? products,
     List<String>? favoriteProducts,
+    String? sortBy,
+    RangeValues? priceRange,
+    String? selectedSize,
   }) {
     return HomeState(
       isLoading: isLoading ?? this.isLoading,
@@ -32,6 +41,9 @@ class HomeState {
       categories: categories ?? this.categories,
       products: products ?? this.products,
       favoriteProducts: favoriteProducts ?? this.favoriteProducts,
+      sortBy: sortBy ?? this.sortBy,
+      priceRange: priceRange ?? this.priceRange,
+      selectedSize: selectedSize ?? this.selectedSize,
     );
   }
 }
