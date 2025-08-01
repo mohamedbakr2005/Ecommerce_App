@@ -10,6 +10,8 @@ import 'package:e_commerce/views/Home/Home_Screen.dart';
 import 'package:e_commerce/views/init/init_screen.dart';
 import 'package:e_commerce/views/Notification/notification_screen.dart';
 import 'package:e_commerce/views/Search/search_screen.dart';
+import 'package:e_commerce/views/SavedItems/Saved_items_screen.dart';
+import 'package:e_commerce/views/SavedItems/cubit/saved_items_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce/views/Notification/cubit/notification_cubit.dart';
@@ -51,6 +53,13 @@ class RouteGenerator {
         );
       case AppRoutes.search:
         return CupertinoPageRoute(builder: (_) => const SearchScreen());
+      case AppRoutes.savedItems:
+        return CupertinoPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => SavedItemsCubit(),
+            child: const SavedItemsScreen(),
+          ),
+        );
       default:
         return errorRoute();
     }

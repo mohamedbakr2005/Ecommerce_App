@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         title: 'e-commerce',
         theme: AppTheme.defaultTheme,
         onGenerateRoute: RouteGenerator.onGenerate,
-        initialRoute: AppRoutes.home,
+        initialRoute: AppRoutes.onboarding,
       ),
     );
   }

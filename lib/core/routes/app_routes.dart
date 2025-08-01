@@ -26,6 +26,7 @@ class AppRoutes {
   static const productDetails = '/productDetails';
   static const cartPage = '/cartPage';
   static const savePage = '/favouriteList';
+  static const savedItems = '/savedItems';
   static const checkoutPage = '/checkoutPage';
 
   /// Order Status

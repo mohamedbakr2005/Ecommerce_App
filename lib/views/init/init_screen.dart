@@ -1,5 +1,7 @@
 import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/Home/Home_Screen.dart';
+import 'package:e_commerce/views/SavedItems/Saved_items_screen.dart';
+import 'package:e_commerce/views/SavedItems/cubit/saved_items_cubit.dart';
 import 'package:e_commerce/views/Search/search_screen.dart';
 import 'package:e_commerce/views/init/cubit/bottom_nav_cubit.dart';
 import 'package:e_commerce/views/init/cubit/bottom_nav_state.dart';
@@ -32,7 +34,10 @@ class InitScreen extends StatelessWidget {
       case 1:
         return const SearchScreen();
       case 2:
-        return _buildSavedScreen();
+        return BlocProvider(
+          create: (context) => SavedItemsCubit(),
+          child: const SavedItemsScreen(),
+        );
       case 3:
         return _buildCartScreen();
       case 4:
@@ -41,7 +46,6 @@ class InitScreen extends StatelessWidget {
         return const HomeScreen();
     }
   }
-
 
   Widget _buildSavedScreen() {
     return const Scaffold(
