@@ -10,9 +10,10 @@ class AppTextFormField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
+  final Function(String)? onChanged;
 
   const AppTextFormField({
-    Key? key,
+    super.key,
     required this.hintText,
     this.controller,
     this.keyboardType,
@@ -20,13 +21,14 @@ class AppTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.validator,
-  }) : super(key: key);
+    this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       style: TextStyle(
-        fontSize: 14.sp,
+        fontSize: 16.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.black,
       ),
@@ -34,9 +36,10 @@ class AppTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       obscureText: obscureText,
       validator: validator,
+      onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(color: AppColors.gray, fontSize: 16),
+        hintStyle: TextStyle(color: AppColors.gray, fontSize: 16.sp),
         filled: true,
         fillColor: Colors.white,
         prefixIcon: prefixIcon,

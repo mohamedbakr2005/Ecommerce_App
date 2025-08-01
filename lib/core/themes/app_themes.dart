@@ -65,7 +65,7 @@ class AppTheme {
       tabBarTheme: const TabBarThemeData(
         labelColor: AppColors.primary,
         unselectedLabelColor: AppColors.primary,
-        labelPadding: const EdgeInsets.all(16),
+        labelPadding: EdgeInsets.all(16),
         indicatorSize: TabBarIndicatorSize.label,
         labelStyle: TextStyle(
           fontWeight: FontWeight.bold,

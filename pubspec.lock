@@ -135,7 +135,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_bloc:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_bloc
       sha256: cf51747952201a455a1c840f8171d273be009b932c75093020f9af64f2123e38
@@ -167,7 +167,7 @@ packages:
     source: hosted
     version: "2.4.6"
   flutter_screenutil:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_screenutil
       sha256: "8239210dd68bee6b0577aa4a090890342d04a136ce1c81f98ee513fc0ce891de"
@@ -193,7 +193,7 @@ packages:
     source: sdk
     version: "0.0.0"
   form_field_validator:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: form_field_validator
       sha256: c1fc6c89b5525288c02fe989a88c6f30bb6072da4f9dded17a04cf68c4abfb87
