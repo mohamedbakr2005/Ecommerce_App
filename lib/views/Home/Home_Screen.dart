@@ -77,6 +77,13 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                               child: AppTextFormField(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    AppRoutes.search,
+                                  );
+                                },
+                                readOnly: true,
                                 hintText: "Search",
                                 prefixIcon: Icon(Icons.search),
                                 controller: state.searchController,

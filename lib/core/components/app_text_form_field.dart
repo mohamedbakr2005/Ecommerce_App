@@ -11,7 +11,8 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
-
+  final bool readOnly;
+  final Function()? onTap;
   const AppTextFormField({
     super.key,
     required this.hintText,
@@ -22,11 +23,15 @@ class AppTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.validator,
     this.onChanged,
+    this.readOnly = false,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: onTap,
+      readOnly: readOnly,
       style: TextStyle(
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
