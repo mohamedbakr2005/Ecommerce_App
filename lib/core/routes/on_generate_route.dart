@@ -2,6 +2,10 @@ import 'package:e_commerce/core/routes/unknown_page.dart';
 import 'package:e_commerce/views/LogIn/LogIn_screen.dart';
 import 'package:e_commerce/views/SignUp/sign_up_screen.dart';
 import 'package:e_commerce/views/onBoarding/onBoarding_page.dart';
+import 'package:e_commerce/views/ForgotPassword/Forgot_password_screen.dart';
+import 'package:e_commerce/views/ForgotPassword/verification_code_screen.dart';
+import 'package:e_commerce/views/ForgotPassword/reset_password_screen.dart';
+import 'package:e_commerce/views/ForgotPassword/password_reset_success_screen.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'app_routes.dart';
@@ -17,6 +21,19 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => SignUpScreen());
       case AppRoutes.login:
         return CupertinoPageRoute(builder: (_) => LogInScreen());
+      case AppRoutes.forgotPassword:
+        return CupertinoPageRoute(builder: (_) => const ForgotPasswordScreen());
+      case AppRoutes.verification:
+        final String email = settings.arguments as String;
+        return CupertinoPageRoute(
+          builder: (_) => VerificationCodeScreen(email: email),
+        );
+      case AppRoutes.passwordReset:
+        return CupertinoPageRoute(builder: (_) => const ResetPasswordScreen());
+      case AppRoutes.passwordResetSuccess:
+        return CupertinoPageRoute(
+          builder: (_) => const PasswordResetSuccessScreen(),
+        );
       default:
         return errorRoute();
     }

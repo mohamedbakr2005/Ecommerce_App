@@ -1,5 +1,4 @@
 name: e_commerce
-description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
@@ -32,13 +31,15 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_screenutil: any
+  form_field_validator: any
+  flutter_bloc: any
 dev_dependencies:
   bloc: ^9.0.0
   flutter_bloc: ^9.1.1
   flutter_launcher_icons: ^0.14.4
   flutter_lints: ^5.0.0
   flutter_native_splash: ^2.4.6
-  flutter_screenutil: ^5.9.3
   flutter_svg: ^2.2.0
   flutter_test:
     sdk: flutter

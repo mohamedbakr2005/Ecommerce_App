@@ -4,7 +4,7 @@ import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingPage extends StatelessWidget {
-  const OnBoardingPage({Key? key}) : super(key: key);
+  const OnBoardingPage({super.key});
 
   @override
   Widget build(BuildContext context) {

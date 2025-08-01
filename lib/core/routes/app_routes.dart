@@ -9,7 +9,9 @@ class AppRoutes {
   static const loginOrSignup = '/loginOrSignup';
   static const numberVerification = '/numberVerification';
   static const forgotPassword = '/forgotPassword';
+  static const verification = '/verification';
   static const passwordReset = '/passwordReset';
+  static const passwordResetSuccess = '/passwordResetSuccess';
 
   /* <---- ENTRYPOINT -----> */
   static const entryPoint = '/entry_point';
