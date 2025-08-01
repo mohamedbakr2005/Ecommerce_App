@@ -5,6 +5,7 @@ import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/Home/cubit/home_cubit.dart';
 import 'package:e_commerce/views/Home/cubit/home_state.dart';
 import 'package:e_commerce/views/Home/widgets/product_card.dart';
+import 'package:e_commerce/views/Filters/filters_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -107,7 +108,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                             child: IconButton(
                               onPressed: () {
-                                // Show filter options
+                                _showFiltersModal(context, state);
                               },
                               icon: Icon(
                                 Icons.tune,
@@ -204,6 +205,31 @@ class HomeScreen extends StatelessWidget {
               );
             },
           ),
+        ),
+      ),
+    );
+  }
+
+  void _showFiltersModal(BuildContext context, HomeState state) {
+    final homeCubit = context.read<HomeCubit>();
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => DraggableScrollableSheet(
+        initialChildSize: 0.7,
+        minChildSize: 0.5,
+        maxChildSize: 0.9,
+        builder: (context, scrollController) => FiltersScreen(
+          homeCubit: homeCubit,
+          currentFilters: {
+            'sortBy': state.sortBy,
+            'priceRange': state.priceRange,
+            'size': state.selectedSize,
+          },
+          onApplyFilters: (filters) {
+            homeCubit.applyFilters(filters);
+          },
         ),
       ),
     );
