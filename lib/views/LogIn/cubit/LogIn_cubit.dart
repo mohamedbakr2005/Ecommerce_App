@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/LogIn/cubit/Login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,10 +37,10 @@ class LoginCubit extends Cubit<LoginState> {
     // Stop loading
     emit(state.copyWith(isLoading: false));
 
-    // Navigate to next screen (you can change this to your desired route)
+    // Navigate to main app with bottom navigation
     Navigator.pushNamedAndRemoveUntil(
       context,
-      '/home', // Replace with your actual route
+      AppRoutes.home,
       (route) => false,
     );
   }

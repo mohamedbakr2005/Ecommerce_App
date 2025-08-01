@@ -6,6 +6,8 @@ import 'package:e_commerce/views/ForgotPassword/Forgot_password_screen.dart';
 import 'package:e_commerce/views/ForgotPassword/verification_code_screen.dart';
 import 'package:e_commerce/views/ForgotPassword/reset_password_screen.dart';
 import 'package:e_commerce/views/ForgotPassword/password_reset_success_screen.dart';
+import 'package:e_commerce/views/Home/Home_Screen.dart';
+import 'package:e_commerce/views/init/init_screen.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'app_routes.dart';
@@ -34,6 +36,8 @@ class RouteGenerator {
         return CupertinoPageRoute(
           builder: (_) => const PasswordResetSuccessScreen(),
         );
+      case AppRoutes.home:
+        return CupertinoPageRoute(builder: (_) => const InitScreen());
       default:
         return errorRoute();
     }
