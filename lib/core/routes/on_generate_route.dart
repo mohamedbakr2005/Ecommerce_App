@@ -8,7 +8,10 @@ import 'package:e_commerce/views/ForgotPassword/reset_password_screen.dart';
 import 'package:e_commerce/views/ForgotPassword/password_reset_success_screen.dart';
 import 'package:e_commerce/views/Home/Home_Screen.dart';
 import 'package:e_commerce/views/init/init_screen.dart';
+import 'package:e_commerce/views/Notification/notification_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:e_commerce/views/Notification/cubit/notification_cubit.dart';
 
 import 'app_routes.dart';
 
@@ -38,6 +41,13 @@ class RouteGenerator {
         );
       case AppRoutes.home:
         return CupertinoPageRoute(builder: (_) => const InitScreen());
+      case AppRoutes.notifications:
+        return CupertinoPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => NotificationCubit(),
+            child: const NotificationScreen(),
+          ),
+        );
       default:
         return errorRoute();
     }
