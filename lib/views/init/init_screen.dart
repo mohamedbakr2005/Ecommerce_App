@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/Home/Home_Screen.dart';
+import 'package:e_commerce/views/Search/search_screen.dart';
 import 'package:e_commerce/views/init/cubit/bottom_nav_cubit.dart';
 import 'package:e_commerce/views/init/cubit/bottom_nav_state.dart';
 import 'package:e_commerce/views/init/widgets/bottom_nav_bar.dart';
@@ -29,7 +30,7 @@ class InitScreen extends StatelessWidget {
       case 0:
         return const HomeScreen();
       case 1:
-        return _buildSearchScreen();
+        return const SearchScreen();
       case 2:
         return _buildSavedScreen();
       case 3:
@@ -41,16 +42,6 @@ class InitScreen extends StatelessWidget {
     }
   }
 
-  Widget _buildSearchScreen() {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Search Screen',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-  }
 
   Widget _buildSavedScreen() {
     return const Scaffold(

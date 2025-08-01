@@ -33,8 +33,8 @@ class BottomNavBar extends StatelessWidget {
                   _buildNavItem(
                     context,
                     index: 0,
-                    icon: "assets/icons/Home.svg",
-                    activeIcon: "assets/icons/Home.svg",
+                    icon: "assets/icons/home.svg",
+                    activeIcon: "assets/icons/home.svg",
                     label: 'Home',
                     isActive: state.currentIndex == 0,
                   ),
