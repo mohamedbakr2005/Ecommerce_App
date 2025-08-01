@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/components/app_text_form_field.dart';
 import 'package:e_commerce/core/constants/app_colors.dart';
 import 'package:e_commerce/core/constants/app_spacing.dart';
+import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/Home/cubit/home_cubit.dart';
 import 'package:e_commerce/views/Home/cubit/home_state.dart';
 import 'package:e_commerce/views/Home/widgets/product_card.dart';
@@ -44,6 +45,10 @@ class HomeScreen extends StatelessWidget {
                           IconButton(
                             onPressed: () {
                               // Navigate to notifications
+                              Navigator.pushNamed(
+                                context,
+                                AppRoutes.notifications,
+                              );
                             },
                             icon: Icon(
                               Icons.notifications_outlined,
