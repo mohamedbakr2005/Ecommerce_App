@@ -1,4 +1,3 @@
-import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/Home/Home_Screen.dart';
 import 'package:e_commerce/views/SavedItems/Saved_items_screen.dart';
 import 'package:e_commerce/views/SavedItems/cubit/saved_items_cubit.dart';
@@ -47,16 +46,6 @@ class InitScreen extends StatelessWidget {
     }
   }
 
-  Widget _buildSavedScreen() {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Saved Screen',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-  }
 
   Widget _buildCartScreen() {
     return const Scaffold(

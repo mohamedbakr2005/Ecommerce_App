@@ -1,7 +1,6 @@
 import 'package:e_commerce/core/constants/app_colors.dart';
 import 'package:e_commerce/views/ProductDetails/cubit/product_details_cubit.dart';
 import 'package:e_commerce/views/ProductDetails/cubit/product_details_state.dart';
-import 'package:e_commerce/views/ProductDetails/models/product_details_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

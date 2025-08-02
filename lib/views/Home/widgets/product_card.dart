@@ -22,14 +22,15 @@ class ProductCard extends StatelessWidget {
         );
       },
       child: Container(
+        height: 270.h,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12.w),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 10,
-              offset: const Offset(0, 2),
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 5,
+              offset: Offset(4, 4),
             ),
           ],
         ),
@@ -47,7 +48,7 @@ class ProductCard extends StatelessWidget {
                   child: Image.asset(
                     product['image'],
                     width: double.infinity,
-                    height: 155.h,
+                    height: MediaQuery.of(context).size.height * 0.2,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -89,7 +90,7 @@ class ProductCard extends StatelessWidget {
 
             // Product Details
             Padding(
-              padding: EdgeInsets.all(12.w),
+              padding: EdgeInsets.all(10.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

@@ -67,25 +67,29 @@ class Login_form extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Forgot your password? ",
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.black,
+              Expanded(
+                child: Text(
+                  "Forgot your password? ",
+                  style: TextStyle(
+                    fontSize: 13.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.black,
+                  ),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.forgotPassword);
-                },
-                child: Text(
-                  "Reset your password",
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.black,
-                    decoration: TextDecoration.underline,
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.forgotPassword);
+                  },
+                  child: Text(
+                    "Reset your password",
+                    style: TextStyle(
+                      fontSize: 13.sp,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.black,
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                 ),
               ),
@@ -129,7 +133,6 @@ class Login_form extends StatelessWidget {
                   onPressed: state.isFormValid
                       ? () {
                           context.read<LoginCubit>().login(context);
-                          
                         }
                       : null,
                   text: "Login",

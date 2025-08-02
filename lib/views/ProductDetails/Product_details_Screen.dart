@@ -1,5 +1,4 @@
 import 'package:e_commerce/core/constants/app_colors.dart';
-import 'package:e_commerce/core/constants/app_spacing.dart';
 import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/ProductDetails/cubit/product_details_cubit.dart';
 import 'package:e_commerce/views/ProductDetails/cubit/product_details_state.dart';
@@ -9,7 +8,6 @@ import 'package:e_commerce/views/ProductDetails/widgets/size_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final String productId;
@@ -132,7 +130,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           SizedBox(height: 20.h),
           Container(
             width: double.infinity,
-            height: 300.h,
+            height: MediaQuery.of(context).size.height * 0.45,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12.w),

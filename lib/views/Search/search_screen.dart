@@ -1,6 +1,5 @@
 import 'package:e_commerce/core/components/app_text_form_field.dart';
 import 'package:e_commerce/core/constants/app_colors.dart';
-import 'package:e_commerce/core/constants/app_spacing.dart';
 import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/Search/cubit/search_cubit.dart';
 import 'package:e_commerce/views/Search/cubit/search_state.dart';

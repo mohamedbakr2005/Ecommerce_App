@@ -7,7 +7,6 @@ import 'package:e_commerce/views/ForgotPassword/Forgot_password_screen.dart';
 import 'package:e_commerce/views/ForgotPassword/verification_code_screen.dart';
 import 'package:e_commerce/views/ForgotPassword/reset_password_screen.dart';
 import 'package:e_commerce/views/ForgotPassword/password_reset_success_screen.dart';
-import 'package:e_commerce/views/Home/Home_Screen.dart';
 import 'package:e_commerce/views/init/init_screen.dart';
 import 'package:e_commerce/views/Notification/notification_screen.dart';
 import 'package:e_commerce/views/Search/search_screen.dart';

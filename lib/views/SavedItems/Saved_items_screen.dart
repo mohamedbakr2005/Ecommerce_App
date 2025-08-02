@@ -113,6 +113,7 @@ class _SavedItemsScreenState extends State<SavedItemsScreen> {
           childAspectRatio: 0.75,
           crossAxisSpacing: 12.w,
           mainAxisSpacing: 16.h,
+          mainAxisExtent: 225.h,
         ),
         itemCount: state.savedItems.length,
         itemBuilder: (context, index) {
