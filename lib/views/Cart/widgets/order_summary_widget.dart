@@ -97,7 +97,7 @@ class OrderSummaryWidget extends StatelessWidget {
                   ),
                   onPressed: state.isLoading
                       ? null
-                      : () => context.read<CartCubit>().checkout(),
+                      : () => context.read<CartCubit>().checkout(context),
                   child: state.isLoading
                       ? SizedBox(
                           width: 20.w,
