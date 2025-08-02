@@ -67,29 +67,25 @@ class Login_form extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Text(
-                  "Forgot your password? ",
-                  style: TextStyle(
-                    fontSize: 13.sp,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.black,
-                  ),
+              Text(
+                "Forgot your password? ",
+                style: TextStyle(
+                  fontSize: 13.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.black,
                 ),
               ),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, AppRoutes.forgotPassword);
-                  },
-                  child: Text(
-                    "Reset your password",
-                    style: TextStyle(
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.black,
-                      decoration: TextDecoration.underline,
-                    ),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.forgotPassword);
+                },
+                child: Text(
+                  "Reset your password",
+                  style: TextStyle(
+                    fontSize: 13.sp,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.black,
+                    decoration: TextDecoration.underline,
                   ),
                 ),
               ),
