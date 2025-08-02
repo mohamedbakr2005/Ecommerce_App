@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/routes/unknown_page.dart';
+import 'package:e_commerce/views/Cart/cubit/cart_cubit.dart';
 import 'package:e_commerce/views/LogIn/LogIn_screen.dart';
 import 'package:e_commerce/views/Reviews/Reviews_screen.dart';
 import 'package:e_commerce/views/SignUp/sign_up_screen.dart';
@@ -7,7 +8,6 @@ import 'package:e_commerce/views/ForgotPassword/Forgot_password_screen.dart';
 import 'package:e_commerce/views/ForgotPassword/verification_code_screen.dart';
 import 'package:e_commerce/views/ForgotPassword/reset_password_screen.dart';
 import 'package:e_commerce/views/ForgotPassword/password_reset_success_screen.dart';
-import 'package:e_commerce/views/Home/Home_Screen.dart';
 import 'package:e_commerce/views/init/init_screen.dart';
 import 'package:e_commerce/views/Notification/notification_screen.dart';
 import 'package:e_commerce/views/Search/search_screen.dart';
@@ -15,6 +15,7 @@ import 'package:e_commerce/views/SavedItems/Saved_items_screen.dart';
 import 'package:e_commerce/views/SavedItems/cubit/saved_items_cubit.dart';
 import 'package:e_commerce/views/ProductDetails/Product_details_Screen.dart';
 import 'package:e_commerce/views/ProductDetails/cubit/product_details_cubit.dart';
+import 'package:e_commerce/views/Cart/Cart_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce/views/Notification/cubit/notification_cubit.dart';
@@ -69,6 +70,13 @@ class RouteGenerator {
           builder: (_) => BlocProvider(
             create: (context) => ProductDetailsCubit(),
             child: ProductDetailsScreen(productId: productId),
+          ),
+        );
+      case AppRoutes.cart:
+        return CupertinoPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => CartCubit(),
+            child: const CartScreen(),
           ),
         );
       case AppRoutes.reviews:

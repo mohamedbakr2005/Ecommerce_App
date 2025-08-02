@@ -70,7 +70,7 @@ class Login_form extends StatelessWidget {
               Text(
                 "Forgot your password? ",
                 style: TextStyle(
-                  fontSize: 14.sp,
+                  fontSize: 13.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.black,
                 ),
@@ -82,7 +82,7 @@ class Login_form extends StatelessWidget {
                 child: Text(
                   "Reset your password",
                   style: TextStyle(
-                    fontSize: 14.sp,
+                    fontSize: 13.sp,
                     fontWeight: FontWeight.bold,
                     color: AppColors.black,
                     decoration: TextDecoration.underline,
@@ -129,7 +129,6 @@ class Login_form extends StatelessWidget {
                   onPressed: state.isFormValid
                       ? () {
                           context.read<LoginCubit>().login(context);
-                          
                         }
                       : null,
                   text: "Login",

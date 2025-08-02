@@ -9,11 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class VerificationCodeScreen extends StatelessWidget {
   final String email;
-  
-  const VerificationCodeScreen({
-    super.key,
-    required this.email,
-  });
+
+  const VerificationCodeScreen({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +41,7 @@ class VerificationCodeScreen extends StatelessWidget {
                         ),
                       ),
                       verticalSpace(20),
-                      
+
                       // Title
                       Text(
                         "Enter 6 Digit Code",
@@ -55,7 +52,7 @@ class VerificationCodeScreen extends StatelessWidget {
                         ),
                       ),
                       verticalSpace(16),
-                      
+
                       // Description text
                       Text(
                         "Enter 6 digit code that your receive on your email",
@@ -75,12 +72,13 @@ class VerificationCodeScreen extends StatelessWidget {
                         ),
                       ),
                       verticalSpace(40),
-                      
+
                       // Verification Code Form
-                      VerificationCodeForm(state: state),
-                      
-                      const Spacer(),
-                      verticalSpace(20),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: VerificationCodeForm(state: state),
+                        ),
+                      ),
                     ],
                   ),
                 ),

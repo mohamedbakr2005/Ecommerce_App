@@ -1,4 +1,5 @@
-import 'package:e_commerce/core/routes/app_routes.dart';
+import 'package:e_commerce/views/Cart/Cart_screen.dart';
+import 'package:e_commerce/views/Cart/cubit/cart_cubit.dart';
 import 'package:e_commerce/views/Home/Home_Screen.dart';
 import 'package:e_commerce/views/SavedItems/Saved_items_screen.dart';
 import 'package:e_commerce/views/SavedItems/cubit/saved_items_cubit.dart';
@@ -39,34 +40,15 @@ class InitScreen extends StatelessWidget {
           child: const SavedItemsScreen(),
         );
       case 3:
-        return _buildCartScreen();
+        return BlocProvider(
+          create: (context) => CartCubit(),
+          child: const CartScreen(),
+        );
       case 4:
         return _buildAccountScreen();
       default:
         return const HomeScreen();
     }
-  }
-
-  Widget _buildSavedScreen() {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Saved Screen',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCartScreen() {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Cart Screen',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
   }
 
   Widget _buildAccountScreen() {

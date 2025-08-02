@@ -18,9 +18,10 @@ class VerificationCodeForm extends StatelessWidget {
         // Code input fields
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
           children: List.generate(6, (index) {
             return SizedBox(
-              width: 50.w,
+              width: 40.w,
               height: 60.h,
               child: TextFormField(
                 controller: state.codeControllers[index],
