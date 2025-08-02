@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce/views/Cart/models/cart_item_model.dart';
 import 'package:e_commerce/views/Cart/cubit/cart_state.dart';
+import 'package:e_commerce/core/routes/app_routes.dart';
 
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial()) {
@@ -116,15 +118,14 @@ class CartCubit extends Cubit<CartState> {
     emit(CartLoaded(items: []));
   }
 
-  void checkout() {
+  void checkout(BuildContext context) {
     if (state is CartLoaded) {
       final currentState = state as CartLoaded;
       emit(currentState.copyWith(isLoading: true));
 
-      // Simulate checkout process
       Future.delayed(const Duration(seconds: 2), () {
-        // Navigate to checkout or show success message
-        emit(CartLoaded(items: [])); // Clear cart after successful checkout
+          Navigator.pushNamed(context, AppRoutes.checkout);
+        emit(CartLoaded(items: []));
       });
     }
   }

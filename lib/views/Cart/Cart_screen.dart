@@ -52,12 +52,6 @@ class CartScreen extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Back Button
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Icon(Icons.arrow_back, size: 24.sp, color: AppColors.black),
-          ),
-
           // Title
           Expanded(
             child: Center(
@@ -90,7 +84,9 @@ class CartScreen extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, CartState state) {
     if (state is CartLoading) {
-      return const Center(child: CircularProgressIndicator());
+      return const Center(
+        child: CircularProgressIndicator(color: AppColors.primary),
+      );
     }
 
     if (state is CartError) {

@@ -18,6 +18,8 @@ class AppRoutes {
   static const productDetails = '/productDetails';
   static const savedItems = '/savedItems';
   static const cart = '/cart';
+  static const checkout = '/checkout';
+  static const address = '/address';
 
   /// Category
   static const category = '/category';
