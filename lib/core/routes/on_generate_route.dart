@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/routes/unknown_page.dart';
 import 'package:e_commerce/views/LogIn/LogIn_screen.dart';
+import 'package:e_commerce/views/Reviews/Reviews_screen.dart';
 import 'package:e_commerce/views/SignUp/sign_up_screen.dart';
 import 'package:e_commerce/views/onBoarding/onBoarding_page.dart';
 import 'package:e_commerce/views/ForgotPassword/Forgot_password_screen.dart';
@@ -70,6 +71,8 @@ class RouteGenerator {
             child: ProductDetailsScreen(productId: productId),
           ),
         );
+      case AppRoutes.reviews:
+        return CupertinoPageRoute(builder: (_) => const ReviewsScreen());
       default:
         return errorRoute();
     }
