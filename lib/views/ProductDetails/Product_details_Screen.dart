@@ -165,24 +165,29 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           SizedBox(height: 8.h),
 
           // Rating
-          Row(
-            children: [
-              Icon(Icons.star, color: Colors.amber, size: 20.sp),
-              SizedBox(width: 4.w),
-              Text(
-                '${product.rating}/5',
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.black,
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.reviews);
+            },
+            child: Row(
+              children: [
+                Icon(Icons.star, color: Colors.amber, size: 20.sp),
+                SizedBox(width: 4.w),
+                Text(
+                  '${product.rating}/5',
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.black,
+                  ),
                 ),
-              ),
-              SizedBox(width: 4.w),
-              Text(
-                '(${product.reviewCount} reviews)',
-                style: TextStyle(fontSize: 14.sp, color: AppColors.gray),
-              ),
-            ],
+                SizedBox(width: 4.w),
+                Text(
+                  '(${product.reviewCount} reviews)',
+                  style: TextStyle(fontSize: 14.sp, color: AppColors.gray),
+                ),
+              ],
+            ),
           ),
 
           SizedBox(height: 16.h),
