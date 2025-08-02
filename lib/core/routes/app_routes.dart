@@ -20,6 +20,7 @@ class AppRoutes {
   static const cart = '/cart';
   static const checkout = '/checkout';
   static const address = '/address';
+  static const newCard = '/newCard';
 
   /// Category
   static const category = '/category';

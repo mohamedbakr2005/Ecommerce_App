@@ -13,6 +13,7 @@ class AppTextFormField extends StatelessWidget {
   final Function(String)? onChanged;
   final bool readOnly;
   final Function()? onTap;
+  final int? maxLength;
   const AppTextFormField({
     super.key,
     required this.hintText,
@@ -25,11 +26,13 @@ class AppTextFormField extends StatelessWidget {
     this.onChanged,
     this.readOnly = false,
     this.onTap,
+    this.maxLength,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLength: maxLength,
       onTap: onTap,
       readOnly: readOnly,
       style: TextStyle(

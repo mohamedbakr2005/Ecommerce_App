@@ -1,6 +1,8 @@
 import 'package:e_commerce/core/routes/unknown_page.dart';
 import 'package:e_commerce/views/Cart/cubit/cart_cubit.dart';
 import 'package:e_commerce/views/LogIn/LogIn_screen.dart';
+import 'package:e_commerce/views/NewCard/NewCard_screen.dart';
+import 'package:e_commerce/views/NewCard/cubit/new_card_cubit.dart';
 import 'package:e_commerce/views/Reviews/Reviews_screen.dart';
 import 'package:e_commerce/views/SignUp/sign_up_screen.dart';
 import 'package:e_commerce/views/OnBoarding/onBoarding_page.dart';
@@ -18,6 +20,7 @@ import 'package:e_commerce/views/ProductDetails/cubit/product_details_cubit.dart
 import 'package:e_commerce/views/Cart/Cart_screen.dart';
 import 'package:e_commerce/views/Checkout/Checkout_Screen.dart';
 import 'package:e_commerce/views/Address/address_screen.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce/views/Notification/cubit/notification_cubit.dart';
@@ -87,6 +90,13 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => const AddressScreen());
       case AppRoutes.reviews:
         return CupertinoPageRoute(builder: (_) => const ReviewsScreen());
+      case AppRoutes.newCard:
+        return CupertinoPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => NewCardCubit(),
+            child: NewCardScreen(),
+          ),
+        );
       default:
         return errorRoute();
     }
