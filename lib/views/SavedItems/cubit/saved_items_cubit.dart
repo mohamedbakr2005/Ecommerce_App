@@ -13,6 +13,7 @@ class SavedItemsCubit extends Cubit<SavedItemsState> {
       price: 1190,
       image: 'assets/images/home1.png',
       category: 'Tshirts',
+      
     ),
     SavedItemModel(
       id: '2',
