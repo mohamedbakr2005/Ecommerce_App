@@ -1,3 +1,4 @@
+import 'package:e_commerce/views/Account/Account_Screen.dart';
 import 'package:e_commerce/views/Cart/Cart_screen.dart';
 import 'package:e_commerce/views/Cart/cubit/cart_cubit.dart';
 import 'package:e_commerce/views/Home/Home_Screen.dart';
@@ -45,20 +46,9 @@ class InitScreen extends StatelessWidget {
           child: const CartScreen(),
         );
       case 4:
-        return _buildAccountScreen();
+        return AccountScreen();
       default:
         return const HomeScreen();
     }
-  }
-
-  Widget _buildAccountScreen() {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Account Screen',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
   }
 }

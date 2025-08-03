@@ -21,6 +21,7 @@ class AppRoutes {
   static const checkout = '/checkout';
   static const address = '/address';
   static const newCard = '/newCard';
+  static const account = '/account';
 
   /// Category
   static const category = '/category';

@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/routes/unknown_page.dart';
+import 'package:e_commerce/views/Account/account_screen.dart';
 import 'package:e_commerce/views/Cart/cubit/cart_cubit.dart';
 import 'package:e_commerce/views/LogIn/LogIn_screen.dart';
 import 'package:e_commerce/views/NewCard/NewCard_screen.dart';
@@ -90,6 +91,8 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => const AddressScreen());
       case AppRoutes.reviews:
         return CupertinoPageRoute(builder: (_) => const ReviewsScreen());
+      case AppRoutes.account:
+        return CupertinoPageRoute(builder: (_) => const AccountScreen());
       case AppRoutes.newCard:
         return CupertinoPageRoute(
           builder: (_) => BlocProvider(
@@ -97,6 +100,7 @@ class RouteGenerator {
             child: NewCardScreen(),
           ),
         );
+
       default:
         return errorRoute();
     }
