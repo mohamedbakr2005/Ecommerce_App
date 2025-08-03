@@ -215,13 +215,20 @@ class CheckoutScreen extends StatelessWidget {
                         paymentMethodId,
                       );
                     },
-                    onEditCard: () {
-                      // TODO: Navigate to card management screen
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Card management feature coming soon!'),
-                        ),
+                    onEditCard: () async {
+                      final result = await Navigator.pushNamed(
+                        context,
+                        AppRoutes.newCard,
                       );
+                      if (result != null) {
+                        // Card was added successfully
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Card added successfully!'),
+                            backgroundColor: Colors.green,
+                          ),
+                        );
+                      }
                     },
                   ),
 

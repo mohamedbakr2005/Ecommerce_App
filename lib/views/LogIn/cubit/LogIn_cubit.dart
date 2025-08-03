@@ -32,7 +32,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(state.copyWith(isLoading: true));
 
     // Wait for 5 seconds
-    await Future.delayed(const Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 2));
 
     // Stop loading
     emit(state.copyWith(isLoading: false));
