@@ -4,12 +4,28 @@ import 'package:e_commerce/core/constants/app_images.dart';
 import 'package:e_commerce/core/constants/app_spacing.dart';
 import 'package:e_commerce/views/MyOrder/cubit/order_cubit.dart';
 import 'package:e_commerce/views/MyOrder/cubit/order_state.dart';
+import 'package:e_commerce/views/MyOrder/widget/time_line.dart';
+import 'package:e_commerce/views/MyOrder/widget/track_order_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MyOrdersScreen extends StatelessWidget {
+  void _showTrackOrder(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: TrackOrderForm(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -311,7 +327,12 @@ class MyOrdersScreen extends StatelessWidget {
                                                   AppColors.primary,
                                               foregroundColor: Colors.white,
                                             ),
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              if (order.action ==
+                                                  "Track Order") {
+                                                _showTrackOrder(context);
+                                              }
+                                            },
                                             child: Text(
                                               order.action,
                                               style: TextStyle(
@@ -341,21 +362,3 @@ class MyOrdersScreen extends StatelessWidget {
     );
   }
 }
-// ListTile(
-//                               leading: CircleAvatar(
-//                                 backgroundColor: Colors.grey[200],
-//                                 child: Text(order.name[0]),
-//                               ),
-//                               title: Text(order.name),
-//                               subtitle: Text("Size ${order.size}"),
-//                               trailing: Column(
-//                                 crossAxisAlignment: CrossAxisAlignment.end,
-//                                 children: [
-//                                   Text("\$${order.price.toStringAsFixed(2)}"),
-//                                   ElevatedButton(
-//                                     onPressed: () {},
-//                                     child: Text(order.action),
-//                                   ),
-//                                 ],
-//                               ),
-//                             );
