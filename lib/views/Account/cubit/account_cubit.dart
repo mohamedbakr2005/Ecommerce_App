@@ -1,4 +1,6 @@
+import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/Account/cubit/account_state.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AccountCubit extends Cubit<AccountState> {
@@ -15,8 +17,8 @@ class AccountCubit extends Cubit<AccountState> {
     }
   }
 
-  void navigateToOrders() {
-    // TODO: Navigate to orders screen
+  void navigateToOrders(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.myOrdersScreen);
   }
 
   void navigateToDetails() {

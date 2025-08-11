@@ -51,7 +51,7 @@ class AccountScreen extends StatelessWidget {
                       icon: Icons.inventory_2_outlined,
                       title: 'My Orders',
                       onTap: () {
-                        context.read<AccountCubit>().navigateToOrders();
+                        context.read<AccountCubit>().navigateToOrders(context);
                       },
                     ),
                     BuildAccountOption(
