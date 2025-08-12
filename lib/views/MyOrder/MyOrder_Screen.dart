@@ -4,6 +4,7 @@ import 'package:e_commerce/core/constants/app_images.dart';
 import 'package:e_commerce/core/constants/app_spacing.dart';
 import 'package:e_commerce/views/MyOrder/cubit/order_cubit.dart';
 import 'package:e_commerce/views/MyOrder/cubit/order_state.dart';
+import 'package:e_commerce/views/MyOrder/widget/leave_review_widget.dart';
 import 'package:e_commerce/views/MyOrder/widget/time_line.dart';
 import 'package:e_commerce/views/MyOrder/widget/track_order_form.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,20 @@ class MyOrdersScreen extends StatelessWidget {
           bottom: MediaQuery.of(context).viewInsets.bottom,
         ),
         child: TrackOrderForm(),
+      ),
+    );
+  }
+
+  void _showLeaveReview(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: LeaveReviewWidget(),
       ),
     );
   }
@@ -306,43 +321,98 @@ class MyOrdersScreen extends StatelessWidget {
                                           ),
                                           horizontalSpace(50),
                                           ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              padding: EdgeInsets.symmetric(
-                                                horizontal:
-                                                    MediaQuery.of(
-                                                      context,
-                                                    ).size.width *
-                                                    0.05,
-                                                vertical:
-                                                    MediaQuery.of(
-                                                      context,
-                                                    ).size.width *
-                                                    0.02,
-                                              ),
-                                              backgroundColor:
-                                                  AppColors.primary,
-                                              foregroundColor: Colors.white,
-                                            ),
+                                            style:
+                                                order.action != "Track Order" &&
+                                                    order.action !=
+                                                        "Leave Review"
+                                                ? ElevatedButton.styleFrom(
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            8,
+                                                          ),
+                                                      side: BorderSide(
+                                                        color: AppColors.gray,
+                                                        strokeAlign: 2,
+                                                        width: 2,
+                                                      ),
+                                                    ),
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                          horizontal:
+                                                              MediaQuery.of(
+                                                                context,
+                                                              ).size.width *
+                                                              0.05,
+                                                          vertical:
+                                                              MediaQuery.of(
+                                                                context,
+                                                              ).size.width *
+                                                              0.02,
+                                                        ),
+                                                    backgroundColor:
+                                                        AppColors.white,
+                                                    foregroundColor:
+                                                        Colors.black,
+                                                  )
+                                                : ElevatedButton.styleFrom(
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            8,
+                                                          ),
+                                                    ),
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                          horizontal:
+                                                              MediaQuery.of(
+                                                                context,
+                                                              ).size.width *
+                                                              0.05,
+                                                          vertical:
+                                                              MediaQuery.of(
+                                                                context,
+                                                              ).size.width *
+                                                              0.02,
+                                                        ),
+                                                    backgroundColor:
+                                                        AppColors.primary,
+                                                    foregroundColor:
+                                                        Colors.white,
+                                                  ),
                                             onPressed: () {
                                               if (order.action ==
                                                   "Track Order") {
                                                 _showTrackOrder(context);
+                                              } else if (order.action ==
+                                                  "Leave Review") {
+                                                _showLeaveReview(context);
                                               }
                                             },
-                                            child: Text(
-                                              order.action,
-                                              style: TextStyle(
-                                                fontSize:
-                                                    MediaQuery.of(
-                                                      context,
-                                                    ).size.width *
-                                                    0.03,
-                                              ),
-                                            ),
+                                            child:
+                                                order.action != "Track Order" &&
+                                                    order.action !=
+                                                        "Leave Review"
+                                                ? Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      Icon(
+                                                        Icons.star,
+                                                        color: Colors.amber,
+                                                      ),
+                                                      horizontalSpace(5),
+                                                      Text(
+                                                        order.action,
+                                                        style: TextStyle(
+                                                          fontSize: 15.sp,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  )
+                                                : Text(order.action),
                                           ),
                                         ],
                                       ),

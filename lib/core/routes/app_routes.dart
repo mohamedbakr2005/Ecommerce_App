@@ -23,6 +23,7 @@ class AppRoutes {
   static const newCard = '/newCard';
   static const account = '/account';
   static const myOrdersScreen = '/myOrdersScreen';
+  static const myDetailsScreen = '/myDetailsScreen';
 
   /// Category
   static const category = '/category';

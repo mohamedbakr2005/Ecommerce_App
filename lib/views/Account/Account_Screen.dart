@@ -58,7 +58,7 @@ class AccountScreen extends StatelessWidget {
                       icon: Icons.person_outline,
                       title: 'My Details',
                       onTap: () {
-                        context.read<AccountCubit>().navigateToDetails();
+                        context.read<AccountCubit>().navigateToDetails(context);
                       },
                     ),
                     BuildAccountOption(

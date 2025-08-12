@@ -14,6 +14,7 @@ class AppTextFormField extends StatelessWidget {
   final bool readOnly;
   final Function()? onTap;
   final int? maxLength;
+  final String? initialValue;
   const AppTextFormField({
     super.key,
     required this.hintText,
@@ -27,11 +28,14 @@ class AppTextFormField extends StatelessWidget {
     this.readOnly = false,
     this.onTap,
     this.maxLength,
+    this.initialValue,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+      initialValue: initialValue,
       maxLength: maxLength,
       onTap: onTap,
       readOnly: readOnly,
