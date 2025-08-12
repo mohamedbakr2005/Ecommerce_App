@@ -21,8 +21,8 @@ class AccountCubit extends Cubit<AccountState> {
     Navigator.pushNamed(context, AppRoutes.myOrdersScreen);
   }
 
-  void navigateToDetails() {
-    // TODO: Navigate to details screen
+  void navigateToDetails(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.myDetailsScreen);
   }
 
   void navigateToAddressBook() {

@@ -2,6 +2,8 @@ import 'package:e_commerce/core/routes/unknown_page.dart';
 import 'package:e_commerce/views/Account/account_screen.dart';
 import 'package:e_commerce/views/Cart/cubit/cart_cubit.dart';
 import 'package:e_commerce/views/LogIn/LogIn_screen.dart';
+import 'package:e_commerce/views/MyDetails/cubit/my_details_cubit.dart';
+import 'package:e_commerce/views/MyDetails/my_details_screen.dart';
 import 'package:e_commerce/views/MyOrder/MyOrder_Screen.dart';
 import 'package:e_commerce/views/MyOrder/cubit/order_cubit.dart';
 import 'package:e_commerce/views/NewCard/NewCard_screen.dart';
@@ -109,6 +111,14 @@ class RouteGenerator {
             child: MyOrdersScreen(),
           ),
         );
+      case AppRoutes.myDetailsScreen:
+        return CupertinoPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => MyDetailsCubit(),
+            child: MyDetailsScreen(),
+          ),
+        );
+
       default:
         return errorRoute();
     }

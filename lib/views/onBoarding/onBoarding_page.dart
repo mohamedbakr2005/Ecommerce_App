@@ -12,7 +12,6 @@ class OnBoardingPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // Full Screen Background Image
           Container(
             width: double.infinity,
             height: double.infinity,
@@ -25,20 +24,14 @@ class OnBoardingPage extends StatelessWidget {
             ),
           ),
 
-          // Safe Area Content
           SafeArea(
             child: Column(
               children: [
-                // Top spacer to account for status bar
                 SizedBox(height: 20.h),
-
-                // Main content area
                 Expanded(child: Container()),
               ],
             ),
           ),
-
-          // Responsive Bottom Sheet
           Positioned(
             left: 0,
             right: 0,
