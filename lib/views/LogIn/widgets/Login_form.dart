@@ -4,21 +4,24 @@ import 'package:e_commerce/core/constants/app_colors.dart';
 import 'package:e_commerce/core/constants/app_images.dart';
 import 'package:e_commerce/core/constants/app_spacing.dart';
 import 'package:e_commerce/core/routes/app_routes.dart';
-import 'package:e_commerce/core/utils/validators.dart';
 import 'package:e_commerce/views/LogIn/cubit/LogIn_cubit.dart';
 import 'package:e_commerce/views/LogIn/cubit/Login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:form_validator/form_validator.dart';
 
-class Login_form extends StatelessWidget {
-  const Login_form({super.key, required this.state});
+class LoginForm extends StatelessWidget {
+  LoginForm({super.key, required this.state});
 
   final LoginState state;
 
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -35,7 +38,11 @@ class Login_form extends StatelessWidget {
             controller: state.emailController,
             hintText: "Enter your email address",
             keyboardType: TextInputType.emailAddress,
-            validator: Validators.email.call,
+            validator: ValidationBuilder()
+                .required("Email is required")
+                .email("Enter a valid email")
+                .maxLength(50, "Email can’t be longer than 50 chars")
+                .build(),
           ),
           verticalSpace(20),
           Text(
@@ -51,7 +58,18 @@ class Login_form extends StatelessWidget {
             controller: state.passwordController,
             hintText: "Enter your password",
             obscureText: !state.isPasswordVisible,
-            validator: Validators.password.call,
+            validator: ValidationBuilder()
+                .required("Password is required")
+                .minLength(8, "Password must be at least 8 characters")
+                .regExp(
+                  RegExp(r'[A-Z]'),
+                  "Password must contain at least one uppercase letter",
+                )
+                .regExp(
+                  RegExp(r'[0-9]'),
+                  "Password must contain at least one number",
+                )
+                .build(),
             suffixIcon: IconButton(
               onPressed: () {
                 context.read<LoginCubit>().togglePasswordVisibility();
@@ -106,7 +124,7 @@ class Login_form extends StatelessWidget {
                       SizedBox(
                         width: 20.w,
                         height: 20.h,
-                        child: CircularProgressIndicator(
+                        child: const CircularProgressIndicator(
                           strokeWidth: 2,
                           valueColor: AlwaysStoppedAnimation<Color>(
                             Colors.white,
@@ -126,11 +144,11 @@ class Login_form extends StatelessWidget {
                   ),
                 )
               : AppButton(
-                  onPressed: state.isFormValid
-                      ? () {
-                          context.read<LoginCubit>().login(context);
-                        }
-                      : null,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      context.read<LoginCubit>().login(context);
+                    }
+                  },
                   text: "Login",
                   backgroundColor: state.isFormValid
                       ? AppColors.primary
@@ -139,7 +157,7 @@ class Login_form extends StatelessWidget {
           verticalSpace(30),
           Row(
             children: [
-              Expanded(child: Divider()),
+              const Expanded(child: Divider()),
               horizontalSpace(10),
               Text(
                 "Or",
@@ -150,7 +168,7 @@ class Login_form extends StatelessWidget {
                 ),
               ),
               horizontalSpace(10),
-              Expanded(child: Divider()),
+              const Expanded(child: Divider()),
             ],
           ),
           verticalSpace(20),

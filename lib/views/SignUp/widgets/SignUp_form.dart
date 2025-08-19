@@ -10,19 +10,22 @@ import 'package:e_commerce/views/SignUp/cubit/SignUp_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:form_validator/form_validator.dart';
 
-class SignUp_Form extends StatelessWidget {
-  const SignUp_Form({super.key, required this.formKey, required this.state});
+class SignUpForm extends StatelessWidget {
+  SignUpForm({super.key, required this.state});
 
-  final GlobalKey<FormState> formKey;
+  final _formKey = GlobalKey<FormState>();
   final SignUpState state;
+
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
+      key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          /// Full Name
           Text(
             "Full Name",
             style: TextStyle(
@@ -35,9 +38,11 @@ class SignUp_Form extends StatelessWidget {
           AppTextFormField(
             controller: state.fullNameController,
             hintText: "Enter your full name",
-            validator: Validators.required.call,
+            validator: ValidationBuilder().minLength(5).maxLength(50).build(),
           ),
           verticalSpace(20),
+
+          /// Email
           Text(
             "Email",
             style: TextStyle(
@@ -50,9 +55,15 @@ class SignUp_Form extends StatelessWidget {
           AppTextFormField(
             controller: state.emailController,
             hintText: "Enter your email",
-            validator: Validators.email.call,
+            validator: ValidationBuilder()
+                .required("Email is required")
+                .email("Enter a valid email")
+                .maxLength(50, "Email can’t be longer than 50 chars")
+                .build(),
           ),
           verticalSpace(20),
+
+          /// Password
           Text(
             "Password",
             style: TextStyle(
@@ -66,7 +77,18 @@ class SignUp_Form extends StatelessWidget {
             controller: state.passwordController,
             hintText: "Enter your password",
             obscureText: !state.isPasswordVisible,
-            validator: Validators.password.call,
+            validator: ValidationBuilder()
+                .required("Password is required")
+                .minLength(8, "Password must be at least 8 characters")
+                .regExp(
+                  RegExp(r'[A-Z]'),
+                  "Password must contain at least one uppercase letter",
+                )
+                .regExp(
+                  RegExp(r'[0-9]'),
+                  "Password must contain at least one number",
+                )
+                .build(),
             suffixIcon: IconButton(
               onPressed: () {
                 context.read<SignUpCubit>().togglePasswordVisibility();
@@ -79,6 +101,7 @@ class SignUp_Form extends StatelessWidget {
             ),
           ),
           verticalSpace(10),
+
           RichText(
             text: TextSpan(
               children: [
@@ -143,7 +166,7 @@ class SignUp_Form extends StatelessWidget {
                       SizedBox(
                         width: 20.w,
                         height: 20.h,
-                        child: CircularProgressIndicator(
+                        child: const CircularProgressIndicator(
                           strokeWidth: 2,
                           valueColor: AlwaysStoppedAnimation<Color>(
                             Colors.white,
@@ -163,20 +186,22 @@ class SignUp_Form extends StatelessWidget {
                   ),
                 )
               : AppButton(
-                  onPressed: state.isFormValid
-                      ? () {
-                          context.read<SignUpCubit>().signUp(context);
-                        }
-                      : null,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      context.read<SignUpCubit>().signUp(context);
+                    }
+                  },
                   text: "Create an account",
                   backgroundColor: state.isFormValid
                       ? AppColors.primary
                       : AppColors.gray,
                 ),
           verticalSpace(20),
+
+          /// Divider
           Row(
             children: [
-              Expanded(child: Divider()),
+              const Expanded(child: Divider()),
               horizontalSpace(10),
               Text(
                 "Or",
@@ -187,10 +212,12 @@ class SignUp_Form extends StatelessWidget {
                 ),
               ),
               horizontalSpace(10),
-              Expanded(child: Divider()),
+              const Expanded(child: Divider()),
             ],
           ),
           verticalSpace(20),
+
+          /// Google Button
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.white,
@@ -217,6 +244,8 @@ class SignUp_Form extends StatelessWidget {
             ),
           ),
           verticalSpace(20),
+
+          /// Facebook Button
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.facebook,
@@ -243,6 +272,8 @@ class SignUp_Form extends StatelessWidget {
             ),
           ),
           verticalSpace(40),
+
+          /// Login Link
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

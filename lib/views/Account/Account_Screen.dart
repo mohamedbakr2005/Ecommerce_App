@@ -1,3 +1,5 @@
+import 'package:e_commerce/core/Api/Authentication/AuthRepository.dart';
+import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/Account/cubit/account_cubit.dart';
 import 'package:e_commerce/views/Account/cubit/account_state.dart';
 import 'package:e_commerce/views/Account/widgets/build_account_option.dart';
@@ -6,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/constants/app_colors.dart';
 
 class AccountScreen extends StatelessWidget {
-  const AccountScreen({Key? key}) : super(key: key);
+  AccountScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -103,31 +105,7 @@ class AccountScreen extends StatelessWidget {
                       title: 'Logout',
                       isLogout: true,
                       onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              backgroundColor: AppColors.white,
-                              title: const Text('Logout'),
-                              content: const Text(
-                                'Are you sure you want to logout?',
-                              ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () => Navigator.of(context).pop(),
-                                  child: const Text('Cancel'),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    context.read<AccountCubit>().logout();
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: const Text('Logout'),
-                                ),
-                              ],
-                            );
-                          },
-                        );
+                        context.read<AccountCubit>().logout(context);
                       },
                     ),
                   ],

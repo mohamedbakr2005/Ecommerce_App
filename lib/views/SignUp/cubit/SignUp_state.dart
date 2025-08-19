@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SignUpState {
   final bool isPasswordVisible;
@@ -6,6 +7,7 @@ class SignUpState {
   final TextEditingController fullNameController;
   final TextEditingController emailController;
   final TextEditingController passwordController;
+
 
   SignUpState({
     required this.isPasswordVisible,
