@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/Api/Authentication/AuthRepository.dart';
 import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/SignUp/cubit/SignUp_state.dart';
 import 'package:flutter/material.dart';
@@ -33,21 +34,37 @@ class SignUpCubit extends Cubit<SignUpState> {
   }
 
   Future<void> signUp(BuildContext context) async {
-    // Start loading
-    emit(state.copyWith(isLoading: true));
+    try {
+      emit(state.copyWith(isLoading: true));
 
-    // Wait for 5 seconds
-    await Future.delayed(const Duration(seconds: 5));
+      final response = await AuthRepository().signup(
+        state.fullNameController.text,
+        state.emailController.text,
+        state.passwordController.text,
+      );
 
-    // Stop loading
-    emit(state.copyWith(isLoading: false));
+      if (response != null) {
+        emit(state.copyWith(isLoading: false));
+        print("Sign Up Success: $response");
 
-    // Navigate to next screen
-    Navigator.pushNamedAndRemoveUntil(
-      context,
-      AppRoutes.login, // Replace with your actual route
-      (route) => false,
-    );
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          AppRoutes.login, // أو AppRoutes.home
+          (route) => false,
+        );
+      } else {
+        emit(state.copyWith(isLoading: false));
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Signup failed, please try again")),
+        );
+      }
+    } catch (e) {
+      emit(state.copyWith(isLoading: false));
+      print("Signup error: $e");
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Error: $e")));
+    }
   }
 
   @override

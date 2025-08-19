@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/Api/Authentication/AuthRepository.dart';
 import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/LogIn/cubit/Login_state.dart';
 import 'package:flutter/material.dart';
@@ -28,21 +29,34 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> login(BuildContext context) async {
-    // Start loading
     emit(state.copyWith(isLoading: true));
+    try {
+      bool success = await AuthRepository().signin(
+        state.emailController.text,
+        state.passwordController.text,
+      );
 
-    // Wait for 5 seconds
-    await Future.delayed(const Duration(seconds: 2));
-
-    // Stop loading
-    emit(state.copyWith(isLoading: false));
-
-    // Navigate to main app with bottom navigation
-    Navigator.pushNamedAndRemoveUntil(
-      context,
-      AppRoutes.home,
-      (route) => false,
-    );
+      if (success) {
+        emit(state.copyWith(isLoading: false));
+        print("Login Success");
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          AppRoutes.home,
+          (route) => false,
+        );
+      } else {
+        emit(state.copyWith(isLoading: false));
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Login failed, please try again")),
+        );
+      }
+    } catch (e) {
+      emit(state.copyWith(isLoading: false));
+      print("Login error: $e");
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Error: $e")));
+    }
   }
 
   @override

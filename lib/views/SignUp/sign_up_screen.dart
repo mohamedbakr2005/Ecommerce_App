@@ -16,46 +16,43 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => SignUpCubit(),
-      child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: Scaffold(
-          body: BlocBuilder<SignUpCubit, SignUpState>(
-            builder: (context, state) {
-              return SingleChildScrollView(
-                child: SafeArea(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20.w,
-                      vertical: 15.h,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Create an account",
-                          style: TextStyle(
-                            fontSize: 32.sp,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.primary,
-                          ),
+      child: Scaffold(
+        body: BlocBuilder<SignUpCubit, SignUpState>(
+          builder: (context, state) {
+            return SingleChildScrollView(
+              child: SafeArea(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20.w,
+                    vertical: 15.h,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Create an account",
+                        style: TextStyle(
+                          fontSize: 32.sp,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primary,
                         ),
-                        Text(
-                          "Let's create your account",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.gray,
-                          ),
+                      ),
+                      Text(
+                        "Let's create your account",
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.gray,
                         ),
-                        verticalSpace(20),
-                        SignUp_Form(formKey: formKey, state: state),
-                      ],
-                    ),
+                      ),
+                      verticalSpace(20),
+                      SignUpForm(state: state),
+                    ],
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );

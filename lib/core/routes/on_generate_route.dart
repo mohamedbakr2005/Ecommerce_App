@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/routes/unknown_page.dart';
 import 'package:e_commerce/views/Account/account_screen.dart';
+import 'package:e_commerce/views/Account/cubit/account_cubit.dart';
 import 'package:e_commerce/views/Cart/cubit/cart_cubit.dart';
 import 'package:e_commerce/views/LogIn/LogIn_screen.dart';
 import 'package:e_commerce/views/MyDetails/cubit/my_details_cubit.dart';
@@ -15,6 +16,7 @@ import 'package:e_commerce/views/ForgotPassword/Forgot_password_screen.dart';
 import 'package:e_commerce/views/ForgotPassword/verification_code_screen.dart';
 import 'package:e_commerce/views/ForgotPassword/reset_password_screen.dart';
 import 'package:e_commerce/views/ForgotPassword/password_reset_success_screen.dart';
+import 'package:e_commerce/views/SplachScreen/SplachScreen.dart';
 import 'package:e_commerce/views/init/init_screen.dart';
 import 'package:e_commerce/views/Notification/notification_screen.dart';
 import 'package:e_commerce/views/Search/search_screen.dart';
@@ -96,7 +98,12 @@ class RouteGenerator {
       case AppRoutes.reviews:
         return CupertinoPageRoute(builder: (_) => const ReviewsScreen());
       case AppRoutes.account:
-        return CupertinoPageRoute(builder: (_) => const AccountScreen());
+        return CupertinoPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => AccountCubit(),
+            child: AccountScreen(),
+          ),
+        );
       case AppRoutes.newCard:
         return CupertinoPageRoute(
           builder: (_) => BlocProvider(
@@ -118,6 +125,8 @@ class RouteGenerator {
             child: MyDetailsScreen(),
           ),
         );
+      case AppRoutes.splashScreen:
+        return CupertinoPageRoute(builder: (_) => SplashScreen());
 
       default:
         return errorRoute();

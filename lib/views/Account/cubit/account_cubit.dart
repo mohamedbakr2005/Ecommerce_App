@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/Api/Authentication/AuthRepository.dart';
 import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/Account/cubit/account_state.dart';
 import 'package:flutter/material.dart';
@@ -6,11 +7,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AccountCubit extends Cubit<AccountState> {
   AccountCubit() : super(AccountInitial());
 
-  void logout() {
+  final AuthRepository _authRepository = AuthRepository();
+
+  void logout(BuildContext context) async {
     emit(AccountLoading());
     try {
-      // TODO: Implement logout logic
-      // Clear user data, tokens, etc.
+      await _authRepository.logout();
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        AppRoutes.login,
+        (route) => false,
+      );
       emit(AccountLoaded());
     } catch (e) {
       emit(AccountError(e.toString()));

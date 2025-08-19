@@ -1,6 +1,7 @@
 class AppRoutes {
   /// The Initial Page
   static const onboarding = '/onboarding';
+  static const splashScreen = '/splashScreen';
 
   /* <---- Login, Signup -----> */
   static const login = '/login';

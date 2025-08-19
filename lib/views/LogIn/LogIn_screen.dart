@@ -14,46 +14,43 @@ class LogInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginCubit(),
-      child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: Scaffold(
-          body: BlocBuilder<LoginCubit, LoginState>(
-            builder: (context, state) {
-              return SingleChildScrollView(
-                child: SafeArea(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20.w,
-                      vertical: 15.h,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Login to your account",
-                          style: TextStyle(
-                            fontSize: 32.sp,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.primary,
-                          ),
+      child: Scaffold(
+        body: BlocBuilder<LoginCubit, LoginState>(
+          builder: (context, state) {
+            return SingleChildScrollView(
+              child: SafeArea(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20.w,
+                    vertical: 15.h,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Login to your account",
+                        style: TextStyle(
+                          fontSize: 32.sp,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primary,
                         ),
-                        Text(
-                          "It's great to see you again.",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.gray,
-                          ),
+                      ),
+                      Text(
+                        "It's great to see you again.",
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.gray,
                         ),
-                        verticalSpace(30),
-                        Login_form(state: state),
-                      ],
-                    ),
+                      ),
+                      verticalSpace(30),
+                      LoginForm(state: state),
+                    ],
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
