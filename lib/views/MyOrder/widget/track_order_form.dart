@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TrackOrderForm extends StatelessWidget {
-  const TrackOrderForm({Key? key}) : super(key: key);
+  const TrackOrderForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -94,10 +94,10 @@ class TrackOrderForm extends StatelessWidget {
                     IconButton(
                       color: AppColors.primary,
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
+                        backgroundColor: WidgetStateProperty.all(
                           AppColors.gray.withOpacity(0.3),
                         ),
-                        shape: MaterialStateProperty.all(
+                        shape: WidgetStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.r),
                           ),

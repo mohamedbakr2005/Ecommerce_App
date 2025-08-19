@@ -4,7 +4,6 @@ import 'package:e_commerce/core/constants/app_colors.dart';
 import 'package:e_commerce/core/constants/app_images.dart';
 import 'package:e_commerce/core/constants/app_spacing.dart';
 import 'package:e_commerce/core/routes/app_routes.dart';
-import 'package:e_commerce/core/utils/validators.dart';
 import 'package:e_commerce/views/SignUp/cubit/SignUp_cubit.dart';
 import 'package:e_commerce/views/SignUp/cubit/SignUp_state.dart';
 import 'package:flutter/material.dart';

@@ -8,14 +8,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({super.key});
+  final String email;
+  final String code;
+  ResetPasswordScreen({super.key, required this.email, required this.code});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: BlocProvider(
-        create: (context) => ResetPasswordCubit(),
+        create: (context) => ResetPasswordCubit(email: email, code: code),
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
@@ -66,7 +68,11 @@ class ResetPasswordScreen extends StatelessWidget {
                           verticalSpace(40),
 
                           // Reset Password Form
-                          ResetPasswordForm(state: state),
+                          ResetPasswordForm(
+                            state: state,
+                            email: email,
+                            code: code,
+                          ),
 
                           verticalSpace(20),
                         ],

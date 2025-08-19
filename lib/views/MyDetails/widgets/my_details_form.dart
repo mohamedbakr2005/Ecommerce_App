@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyDetails_form extends StatelessWidget {
-  MyDetails_form({super.key, required this.formKey, required this.state});
+  const MyDetails_form({super.key, required this.formKey, required this.state});
   final GlobalKey<FormState> formKey;
   final MyDetailsState state;
   @override

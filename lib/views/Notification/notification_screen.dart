@@ -10,7 +10,7 @@ import 'widgets/notification_item.dart';
 import 'widgets/notification_empty_state.dart';
 
 class NotificationScreen extends StatefulWidget {
-  const NotificationScreen({Key? key}) : super(key: key);
+  const NotificationScreen({super.key});
 
   @override
   State<NotificationScreen> createState() => _NotificationScreenState();
@@ -135,7 +135,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 ],
               ),
             )
-            .toList(),
+            ,
 
         const SizedBox(height: 16),
       ],

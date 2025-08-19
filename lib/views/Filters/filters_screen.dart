@@ -10,11 +10,11 @@ class FiltersScreen extends StatefulWidget {
   final HomeCubit homeCubit;
 
   const FiltersScreen({
-    Key? key,
+    super.key,
     required this.onApplyFilters,
     required this.currentFilters,
     required this.homeCubit,
-  }) : super(key: key);
+  });
 
   @override
   State<FiltersScreen> createState() => _FiltersScreenState();

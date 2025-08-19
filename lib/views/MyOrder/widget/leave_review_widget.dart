@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LeaveReviewWidget extends StatelessWidget {
-  const LeaveReviewWidget({Key? key}) : super(key: key);
+  const LeaveReviewWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

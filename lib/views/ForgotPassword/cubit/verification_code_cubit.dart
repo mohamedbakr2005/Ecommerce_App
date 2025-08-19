@@ -1,3 +1,5 @@
+import 'package:e_commerce/core/Api/ResetPassword/ResetPasswordRepo.dart';
+import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/ForgotPassword/cubit/verification_code_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -70,12 +72,14 @@ class VerificationCodeCubit extends Cubit<VerificationCodeState> {
       return;
     }
 
+    final code = state.codeControllers.map((c) => c.text).join().trim();
+
+    print(code);
     // Start loading
     emit(state.copyWith(isLoading: true));
 
     try {
-      // Simulate API call
-      await Future.delayed(const Duration(seconds: 2));
+      await Resetpasswordrepo().verifyResetCode(state.email, code);
 
       // Stop loading
       emit(state.copyWith(isLoading: false));
@@ -89,7 +93,11 @@ class VerificationCodeCubit extends Cubit<VerificationCodeState> {
       );
 
       // Navigate to password reset screen
-      Navigator.pushNamed(context, '/passwordReset');
+      Navigator.pushNamed(
+        context,
+        AppRoutes.passwordReset,
+        arguments: {"email": state.email, "code": code},
+      );
     } catch (e) {
       // Stop loading
       emit(state.copyWith(isLoading: false));

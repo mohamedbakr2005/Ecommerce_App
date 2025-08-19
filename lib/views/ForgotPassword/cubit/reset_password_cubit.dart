@@ -1,10 +1,13 @@
+import 'package:e_commerce/core/Api/ResetPassword/ResetPasswordRepo.dart';
 import 'package:e_commerce/views/ForgotPassword/cubit/reset_password_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:async';
 
 class ResetPasswordCubit extends Cubit<ResetPasswordState> {
-  ResetPasswordCubit()
+  final String email;
+  final String code;
+  ResetPasswordCubit({required this.email, required this.code})
     : super(
         ResetPasswordState(
           isLoading: false,
@@ -75,8 +78,11 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     emit(state.copyWith(isLoading: true));
 
     try {
-      // Simulate API call
-      await Future.delayed(const Duration(seconds: 2));
+      await Resetpasswordrepo().resetPasswordWithCode(
+        email,
+        code,
+        state.newPasswordController.text,
+      );
 
       // Stop loading
       emit(state.copyWith(isLoading: false));

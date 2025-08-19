@@ -43,22 +43,15 @@ class SignUpCubit extends Cubit<SignUpState> {
         state.passwordController.text,
       );
 
-      if (response != null) {
-        emit(state.copyWith(isLoading: false));
-        print("Sign Up Success: $response");
+      emit(state.copyWith(isLoading: false));
+      print("Sign Up Success: $response");
 
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          AppRoutes.login, // أو AppRoutes.home
-          (route) => false,
-        );
-      } else {
-        emit(state.copyWith(isLoading: false));
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Signup failed, please try again")),
-        );
-      }
-    } catch (e) {
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        AppRoutes.login, // أو AppRoutes.home
+        (route) => false,
+      );
+        } catch (e) {
       emit(state.copyWith(isLoading: false));
       print("Signup error: $e");
       ScaffoldMessenger.of(
