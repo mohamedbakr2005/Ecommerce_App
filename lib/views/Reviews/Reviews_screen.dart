@@ -221,7 +221,7 @@ class ReviewsScreen extends StatelessWidget {
         verticalSpace(16),
 
         // Reviews List
-        ...state.reviews.map((review) => ReviewItem(review: review)).toList(),
+        ...state.reviews.map((review) => ReviewItem(review: review)),
       ],
     );
   }

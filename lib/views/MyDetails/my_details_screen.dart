@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyDetailsScreen extends StatelessWidget {
-  MyDetailsScreen({Key? key}) : super(key: key);
+  MyDetailsScreen({super.key});
 
   final formKey = GlobalKey<FormState>();
   @override

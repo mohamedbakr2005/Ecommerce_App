@@ -1,3 +1,5 @@
+import 'package:e_commerce/core/Api/ResetPassword/ResetPasswordRepo.dart';
+import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/ForgotPassword/cubit/Forgot_password_screen_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,35 +30,24 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
       return;
     }
 
-    // Start loading
     emit(state.copyWith(isLoading: true));
 
     try {
-      // Simulate API call
-      await Future.delayed(const Duration(seconds: 2));
-
-      // Stop loading
-      emit(state.copyWith(isLoading: false));
-
-      // Show success message
+      await Resetpasswordrepo().sendResetCode(state.emailController.text);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Verification code sent to your email'),
           backgroundColor: Colors.green,
         ),
       );
-
-      // Navigate to verification screen
+      emit(state.copyWith(isLoading: false));
       Navigator.pushNamed(
         context,
-        '/verification',
+        AppRoutes.verification,
         arguments: state.emailController.text,
       );
     } catch (e) {
-      // Stop loading
       emit(state.copyWith(isLoading: false));
-
-      // Show error message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error: ${e.toString()}'),

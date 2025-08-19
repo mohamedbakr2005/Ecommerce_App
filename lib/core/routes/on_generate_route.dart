@@ -53,7 +53,12 @@ class RouteGenerator {
           builder: (_) => VerificationCodeScreen(email: email),
         );
       case AppRoutes.passwordReset:
-        return CupertinoPageRoute(builder: (_) => const ResetPasswordScreen());
+        final args = settings.arguments as Map<String, dynamic>;
+        final email = args["email"];
+        final code = args["code"];
+        return CupertinoPageRoute(
+          builder: (_) => ResetPasswordScreen(email: email, code: code),
+        );
       case AppRoutes.passwordResetSuccess:
         return CupertinoPageRoute(
           builder: (_) => const PasswordResetSuccessScreen(),

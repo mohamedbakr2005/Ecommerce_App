@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/constants/app_colors.dart';
 
 class NotificationEmptyState extends StatelessWidget {
-  const NotificationEmptyState({Key? key}) : super(key: key);
+  const NotificationEmptyState({super.key});
 
   @override
   Widget build(BuildContext context) {

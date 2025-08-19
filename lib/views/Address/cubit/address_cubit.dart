@@ -174,7 +174,7 @@ class AddressCubit extends Cubit<AddressState> {
           newSelectedAddress = updatedAddresses.first.copyWith(
             isSelected: true,
           );
-          updatedAddresses[0] = newSelectedAddress!;
+          updatedAddresses[0] = newSelectedAddress;
         }
 
         emit(

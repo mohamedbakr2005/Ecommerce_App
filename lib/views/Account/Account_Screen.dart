@@ -1,5 +1,3 @@
-import 'package:e_commerce/core/Api/Authentication/AuthRepository.dart';
-import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/views/Account/cubit/account_cubit.dart';
 import 'package:e_commerce/views/Account/cubit/account_state.dart';
 import 'package:e_commerce/views/Account/widgets/build_account_option.dart';
@@ -8,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/constants/app_colors.dart';
 
 class AccountScreen extends StatelessWidget {
-  AccountScreen({Key? key}) : super(key: key);
+  const AccountScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

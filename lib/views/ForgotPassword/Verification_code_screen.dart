@@ -9,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class VerificationCodeScreen extends StatelessWidget {
   final String email;
-
   const VerificationCodeScreen({super.key, required this.email});
 
   @override
