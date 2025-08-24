@@ -45,7 +45,6 @@ class HomeScreen extends StatelessWidget {
                           ),
                           IconButton(
                             onPressed: () {
-                              // Navigate to notifications
                               Navigator.pushNamed(
                                 context,
                                 AppRoutes.notifications,

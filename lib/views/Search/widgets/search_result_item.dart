@@ -6,13 +6,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchResultItem extends StatelessWidget {
   final SearchProductModel product;
-  final VoidCallback? onTap;
+  final void Function()? onTap;
 
   const SearchResultItem({super.key, required this.product, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),

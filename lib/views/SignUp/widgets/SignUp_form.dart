@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:e_commerce/core/Api/ApiService/api_service.dart';
 import 'package:e_commerce/core/components/app_button.dart';
 import 'package:e_commerce/core/components/app_text_form_field.dart';
 import 'package:e_commerce/core/constants/app_colors.dart';
@@ -10,9 +13,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_validator/form_validator.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:http/http.dart' as http;
 
 class SignUpForm extends StatelessWidget {
   SignUpForm({super.key, required this.state});
+  // final GoogleSignIn _googleSignIn = GoogleSignIn(
+  //   clientId:
+  //       "999410073682-0i7678133vgauq8e275jnmeces6put3k.apps.googleusercontent.com",
+  //   scopes: ['email', 'profile', 'openid'],
+  // );
+
+  // Future<void> signInWithGoogle() async {
+  //   try {
+  //     final account = await _googleSignIn.signIn();
+  //     if (account == null) return; // المستخدم لغى العملية
+
+  //     final authentication = await account.authentication;
+
+  //     final idToken = authentication.idToken; // ده اللي هنبعته للـ API
+
+  //     print(idToken);
+  //     // ابعته للسيرفر بتاعك
+  //     final response = await http.post(
+  //       Uri.parse('${ApiService.baseUrl}/auth/google-login'),
+  //       body: jsonEncode({'idToken': idToken}),
+  //       headers: {'Content-Type': 'application/json'},
+  //     );
+
+  //     if (response.statusCode == 200) {
+  //       print('تم تسجيل الدخول بنجاح!');
+  //     } else {
+  //       print('فشل تسجيل الدخول: ${response.body}');
+  //     }
+  //   } catch (e) {
+  //     print('Error: $e');
+  //   }
+  // }
 
   final _formKey = GlobalKey<FormState>();
   final SignUpState state;
@@ -225,7 +262,9 @@ class SignUpForm extends StatelessWidget {
                 side: BorderSide(color: AppColors.gray),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              // signInWithGoogle();
+            },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

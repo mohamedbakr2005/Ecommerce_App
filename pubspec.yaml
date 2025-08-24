@@ -35,6 +35,7 @@ dependencies:
   flutter_screenutil: any
   form_field_validator: any
   form_validator: ^2.1.1
+  google_sign_in: ^6.3.0
   http: ^1.5.0
   shared_preferences: ^2.5.3
   supabase_flutter: ^2.9.1

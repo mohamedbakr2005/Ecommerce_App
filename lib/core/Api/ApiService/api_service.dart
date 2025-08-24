@@ -2,7 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String baseUrl = "https://e0b95d3977b3.ngrok-free.app/api";
+  static const String baseUrl =
+      "https://9ebcbc480f7d21add5fd6558850b6e4c.serveo.net/api";
+
+  // ssh -R 80:localhost:5253 serveo.net
 
   Future<Map<String, dynamic>> post(
     String endpoint,

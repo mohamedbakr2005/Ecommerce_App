@@ -34,6 +34,8 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      cursorColor: AppColors.black,
+      cursorWidth: 3,
       onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
       initialValue: initialValue,
       maxLength: maxLength,
@@ -60,17 +62,17 @@ class AppTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.w),
           borderSide: BorderSide(color: AppColors.gray, width: 0.1.w),
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.w),
-          borderSide: BorderSide(color: AppColors.gray, width: 0.1.w),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.w),
-          borderSide: BorderSide(color: AppColors.primary, width: 1.5.w),
-        ),
+        // enabledBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(10.w),
+        //   borderSide: BorderSide(color: AppColors.gray, width: 0.1.w),
+        // ),
+        // focusedBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(10.w),
+        //   borderSide: BorderSide(color: AppColors.gray, width: 1.5.w),
+        // ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.w),
-          borderSide: BorderSide(color: AppColors.red),
+          borderSide: BorderSide(color: AppColors.red, width: 1.5.w),
         ),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,

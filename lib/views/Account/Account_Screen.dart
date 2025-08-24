@@ -17,10 +17,6 @@ class AccountScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: AppColors.scaffoldBackground,
           elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: AppColors.black),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
           title: const Text(
             'Account',
             style: TextStyle(

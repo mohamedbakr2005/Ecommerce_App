@@ -15,30 +15,27 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: BlocProvider(
-        create: (context) => SearchCubit(),
-        child: Scaffold(
-          backgroundColor: AppColors.scaffoldBackground,
-          body: BlocBuilder<SearchCubit, SearchState>(
-            builder: (context, state) {
-              return SafeArea(
-                child: Column(
-                  children: [
-                    // Header
-                    _buildHeader(context),
+    return BlocProvider(
+      create: (context) => SearchCubit(),
+      child: Scaffold(
+        backgroundColor: AppColors.scaffoldBackground,
+        body: BlocBuilder<SearchCubit, SearchState>(
+          builder: (context, state) {
+            return SafeArea(
+              child: Column(
+                children: [
+                  // Header
+                  _buildHeader(context),
 
-                    // Search Bar
-                    _buildSearchBar(context, state),
+                  // Search Bar
+                  _buildSearchBar(context, state),
 
-                    // Content
-                    Expanded(child: _buildContent(context, state)),
-                  ],
-                ),
-              );
-            },
-          ),
+                  // Content
+                  Expanded(child: _buildContent(context, state)),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );
@@ -181,6 +178,7 @@ class SearchScreen extends StatelessWidget {
       itemCount: state.searchResults.length,
       itemBuilder: (context, index) {
         final product = state.searchResults[index];
+        final productid = "1";
         return SearchResultItem(
           product: product,
           onTap: () {
@@ -188,7 +186,7 @@ class SearchScreen extends StatelessWidget {
             Navigator.pushNamed(
               context,
               AppRoutes.productDetails,
-              arguments: product,
+              arguments: productid,
             );
           },
         );
