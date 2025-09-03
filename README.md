@@ -17,7 +17,7 @@ A full-featured E-Commerce project built with **.NET API** for the backend and *
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** Flutter, Bloc/Cubit, Hive (for local storage)
+- **Frontend:** Flutter, Bloc/Cubit
 - **Backend:** ASP.NET Core Web API
 - **Database:** SQL Server
 - **Authentication:** JWT Tokens
